@@ -1,7 +1,10 @@
-# Remove all previous content and replace with:
-def _load_jupyter_server_extension(server_app):
+def _jupyter_nbextension_paths():
     """
-    Called when the extension is loaded.
+    Returns paths for installing the notebook extension
     """
-    server_app.log.info('Jupyter Hover Tooltip extension is loaded')
-    return True
+    return [{
+        'section': 'notebook',
+        'src': 'static',
+        'dest': 'jupyter_hover_tooltip',
+        'require': 'jupyter_hover_tooltip/hover_tooltip'
+    }]

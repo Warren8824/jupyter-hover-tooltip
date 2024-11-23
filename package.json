@@ -26,7 +26,6 @@
   },
   "scripts": {
     "build": "npm run build:lib && npm run build:labextension:dev",
-    "build:lib": "tsc",
     "build:labextension": "jupyter labextension build .",
     "build:labextension:dev": "jupyter labextension build --development True .",
     "clean": "npm run clean:lib",
@@ -39,8 +38,7 @@
   },
   "devDependencies": {
     "@jupyterlab/builder": "~4.2.6",
-    "del-cli": "^5.0.0",
-    "typescript": "~5.0.4"
+    "del-cli": "^5.0.0"
   },
   "sideEffects": [
     "style/*.css",

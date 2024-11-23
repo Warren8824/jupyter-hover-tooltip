@@ -1,0 +1,49 @@
+{
+  "name": "jupyter-hover-tooltip",
+  "version": "0.1.0",
+  "description": "A JupyterLab extension for displaying python code in tooltips when links are hovered.",
+  "keywords": [
+    "jupyter",
+    "jupyterlab",
+    "jupyterlab-extension"
+  ],
+  "homepage": "https://github.com/Warren8824/jupyter-hover-tooltip",
+  "bugs": {
+    "url": "https://github.com/Warren8824/jupyter-hover-tooltip/issues"
+  },
+  "license": "MIT",
+  "author": "Warren Bebbington",
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,js,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
+  ],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "style": "style/index.css",
+  "jupyterlab": {
+    "extension": true,
+    "outputDir": "jupyter_hover_tooltip/labextension"
+  },
+  "scripts": {
+    "build": "npm run build:lib && npm run build:labextension:dev",
+    "build:lib": "tsc",
+    "build:labextension": "jupyter labextension build .",
+    "build:labextension:dev": "jupyter labextension build --development True .",
+    "clean": "npm run clean:lib",
+    "clean:lib": "del-cli lib tsconfig.tsbuildinfo"
+  },
+  "dependencies": {
+    "@jupyterlab/application": "~4.2.6",
+    "@jupyterlab/notebook": "~4.2.6",
+    "@lumino/disposable": "^2.1.2"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "~4.2.6",
+    "del-cli": "^5.0.0",
+    "typescript": "~5.0.4"
+  },
+  "sideEffects": [
+    "style/*.css",
+    "style/index.js"
+  ]
+}

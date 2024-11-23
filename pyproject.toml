@@ -1,0 +1,15 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyter_hover_tooltip"
+version = "0.1.0"
+description = "Jupyter extension for hoverable code tooltips"
+dependencies = [
+    "jupyterlab>=4.0.0",
+    "jupyter_server>=2.0.0"
+]
+
+[project.entry-points."jupyter_server.extensions"]
+jupyter_hover_tooltip = "jupyter_hover_tooltip:_load_jupyter_server_extension"

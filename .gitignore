@@ -20,6 +20,10 @@ wheels/
 .installed.cfg
 *.egg
 
+# Notebooks
+*.ipynb
+
+
 # Node
 node_modules/
 npm-debug.log*

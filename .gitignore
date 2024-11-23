@@ -27,7 +27,7 @@ yarn-debug.log*
 yarn-error.log*
 yarn.lock
 .yarn
-.pnp.*
+.virtual_documents/
 
 # JupyterLab
 *.bundle.*

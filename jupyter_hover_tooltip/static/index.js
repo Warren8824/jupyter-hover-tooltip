@@ -11,7 +11,7 @@ export class HoverTooltip {
 
     // Check if the cell node exists and is of type MarkdownCell
     if (!cell.node) {
-      console.error('Cell node not found'); // Debug log
+      console.error('Cell node not found');
       return;
     }
 
@@ -30,16 +30,16 @@ export class HoverTooltip {
 
             link.addEventListener('mouseover', async (e) => {
               if (e.target.tagName !== 'A') return; // Ensure it's a link
-              console.log('Hover event triggered for link:', e.target.href); // Debug log
+              console.log('Hover event triggered'); // Debug log
               try {
                 const response = await fetch(link.href);
                 if (!response.ok) {
-                  console.error('Failed to fetch file:', response.status); // Debug log
+                  console.error('Failed to fetch file:', response.status);
                   return; // Early exit if fetching fails
                 }
                 const content = await response.text();
                 if (!content) {
-                  console.error('Fetched content is empty'); // Debug log
+                  console.error('Fetched content is empty');
                   return; // Early exit if content is empty
                 }
                 console.log('Fetched content:', content.substring(0, 50) + '...'); // Debug log
@@ -68,7 +68,7 @@ export class HoverTooltip {
 
                 document.body.appendChild(tooltip);
               } catch (error) {
-                console.error('Error loading file:', error); // Debug log
+                console.error('Error loading file:', error);
 
                 // Show error in notebook
                 const errorDiv = document.createElement('div');
@@ -82,7 +82,7 @@ export class HoverTooltip {
           }
         });
       } else {
-        console.log('No links found in this cell'); // Debug log
+        console.log('No links found in this cell');
       }
 
       // Add visual debug indicator
@@ -92,8 +92,6 @@ export class HoverTooltip {
       debugDiv.style.margin = '5px';
       debugDiv.textContent = 'Hover Extension Active on this cell';
       cell.node.appendChild(debugDiv);
-    } else {
-      console.log('Cell is not a MarkdownCell, skipping...'); // Debug log
     }
   }
 
@@ -104,24 +102,17 @@ export class HoverTooltip {
         console.log('New notebook widget created'); // Debug log
         notebook.model.cells.changed.connect((_, args) => {
           console.log('Cell changed event:', args); // Debug log
+          console.log('New cell:', notebook.widgets[args.newIndex]);
 
-          // Check args for validity
-          if (!args || !args.newIndex) {
-            console.error('Invalid args in cell changed event:', args); // Debug log
-            return;
-          }
+          // Check for valid newIndex and ensure it's within bounds
+          console.log('args.newIndex:', args.newIndex);
+          console.log('notebook.widgets.length:', notebook.widgets.length);
 
-          const newCell = notebook.widgets[args.newIndex];
-          console.log('New cell:', newCell); // Debug log
-
-          // Ensure the new cell is processed
-          if (args.type === 'add') {
-            if (newCell) {
-              console.log('Processing newly added cell'); // Debug log
-              this.processCell(newCell);
-            } else {
-              console.error('New cell is undefined, cannot process'); // Debug log
-            }
+          // Ensure that newIndex is valid before processing
+          if (args.type === 'add' && args.newIndex >= 0 && args.newIndex < notebook.widgets.length) {
+            this.processCell(notebook.widgets[args.newIndex]);
+          } else {
+            console.error('Invalid newIndex or event type is not "add":', args);
           }
         });
         return null;

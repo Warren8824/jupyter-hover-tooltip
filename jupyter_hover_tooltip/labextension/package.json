@@ -35,7 +35,7 @@
     "build:labextension": "jupyter labextension build .",
     "build:labextension:dev": "jupyter labextension build --development True .",
     "clean": "npm run clean:lib",
-    "clean:lib": "rimraf lib tsconfig.tsbuildinfo"
+    "clean:lib": "del-cli lib tsconfig.tsbuildinfo"
   },
   "dependencies": {
     "@jupyterlab/application": "~4.2.6",
@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "@jupyterlab/builder": "~4.2.6",
-    "rimraf": "^5.0.10",
+    "del-cli": "^5.0.0",
     "typescript": "~5.0.4"
   },
   "sideEffects": [

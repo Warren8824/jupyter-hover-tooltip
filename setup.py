@@ -6,12 +6,15 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     install_requires=[
-        'jupyterlab>=4.0.0',
-        'jupyter_server>=2.0.0'
+        "jupyterlab>=4.2.6,<5.0.0",
     ],
-    entry_points={
-        "jupyter_server.extensions": [
-            "jupyter_hover_tooltip = jupyter_hover_tooltip:_load_jupyter_server_extension"
-        ]
-    }
+    data_files=[
+        ("share/jupyter/labextensions/jupyter-hover-tooltip", [
+            "install.json",
+        ]),
+        ("share/jupyter/labextensions/jupyter-hover-tooltip/static", [
+            "lib/index.js",
+            "style/index.css"
+        ]),
+    ],
 )

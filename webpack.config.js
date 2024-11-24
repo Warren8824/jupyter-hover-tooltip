@@ -5,12 +5,12 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'lib'),
         filename: 'index.js',
-        libraryTarget: 'amd',  // Added: Required for Jupyter compatibility
-        publicPath: 'auto'     // Added: Helps with asset loading
+        libraryTarget: 'amd',
+        publicPath: 'auto'
     },
-    mode: 'development',       // Changed: Better for debugging
-    devtool: 'source-map',    // Added: Helps with debugging
-    module: {                  // Added: Required for processing different file types
+    mode: 'development',
+    devtool: 'source-map',
+    module: {
         rules: [
             {
                 test: /\.js$/,
@@ -32,10 +32,30 @@ module.exports = {
         extensions: ['.js', '.json'],
     },
     externals: {
-        '@jupyterlab/cells': '@jupyterlab/cells',
-        '@jupyterlab/application': '@jupyterlab/application',
-        '@jupyterlab/notebook': '@jupyterlab/notebook',
-        '@jupyterlab/services': '@jupyterlab/services',
-        '@lumino/widgets': '@lumino/widgets'
+        '@jupyterlab/application': {
+            commonjs: '@jupyterlab/application',
+            commonjs2: '@jupyterlab/application',
+            amd: '@jupyterlab/application'
+        },
+        '@jupyterlab/notebook': {
+            commonjs: '@jupyterlab/notebook',
+            commonjs2: '@jupyterlab/notebook',
+            amd: '@jupyterlab/notebook'
+        },
+        '@lumino/widgets': {
+            commonjs: '@lumino/widgets',
+            commonjs2: '@lumino/widgets',
+            amd: '@lumino/widgets'
+        },
+        '@jupyterlab/cells': {
+            commonjs: '@jupyterlab/cells',
+            commonjs2: '@jupyterlab/cells',
+            amd: '@jupyterlab/cells'
+        },
+        '@jupyterlab/services': {
+            commonjs: '@jupyterlab/services',
+            commonjs2: '@jupyterlab/services',
+            amd: '@jupyterlab/services'
+        }
     }
 };

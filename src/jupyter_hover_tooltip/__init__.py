@@ -1,7 +1,10 @@
-def _jupyter_nbextension_paths():
+from pathlib import Path
+
+def _jupyter_labextension_paths():
+    """Called by Jupyter Lab Server to detect if it is a valid labextension and
+    to install the widget
+    """
     return [{
-        'section': 'notebook',
-        'src': 'static',
-        'dest': 'jupyter_hover_tooltip',
-        'require': 'jupyter_hover_tooltip/index'
+        'src': 'labextension',
+        'dest': 'jupyter-hover-tooltip'
     }]

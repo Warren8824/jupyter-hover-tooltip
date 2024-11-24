@@ -20,4 +20,11 @@ setup(
     ],
     python_requires=">=3.8",
     zip_safe=False,
+    classifiers=[
+        "Framework :: Jupyter",
+        "Framework :: Jupyter :: JupyterLab",
+        "Framework :: Jupyter :: JupyterLab :: 4",
+        "Framework :: Jupyter :: JupyterLab :: Extensions",
+        "Framework :: Jupyter :: JupyterLab :: Extensions :: Prebuilt"
+    ]
 )

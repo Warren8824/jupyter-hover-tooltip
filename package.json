@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "author": "Warren Bebbington",
-  "main": "src/index.js",
+  "main": "src/jupyter_hover_tooltip/static/index.js",  // Updated main field
   "jupyterlab": {
     "extension": true,
     "outputDir": "jupyter_hover_tooltip/labextension"

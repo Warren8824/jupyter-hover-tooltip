@@ -28,6 +28,36 @@
     },
     "jupyterlab": {
         "extension": true,
-        "outputDir": "lib"
-    }
+        "outputDir": "lib",
+        "discovery": {
+            "server": {
+                "managers": [
+                    "pip"
+                ],
+                "base": {
+                    "name": "jupyter_hover_tooltip"
+                }
+            }
+        },
+        "sharedPackages": {
+            "@jupyterlab/application": {
+                "bundled": false,
+                "singleton": true
+            },
+            "@jupyterlab/notebook": {
+                "bundled": false,
+                "singleton": true
+            },
+            "@lumino/widgets": {
+                "bundled": false,
+                "singleton": true
+            }
+        }
+    },
+    "files": [
+        "lib/**/*.{js,js.map,json}",
+        "style/**/*.css",
+        "schema/**/*.json"
+    ],
+    "main": "lib/index.js"
 }

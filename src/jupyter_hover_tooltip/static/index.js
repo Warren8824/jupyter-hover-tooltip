@@ -1,17 +1,14 @@
 import { TooltipManager } from './tooltip';
 import './styles.css';
 
-import { INotebookTracker } from '@jupyterlab/notebook';
-import { JupyterFrontEnd, JupyterFrontEndPlugin } from '@jupyterlab/application';
-
 const plugin = {
     id: 'jupyter-hover-tooltip:plugin',
     autoStart: true,
-    requires: [INotebookTracker],
-    activate: (app: JupyterFrontEnd, notebooks: INotebookTracker) => {
+    requires: ['@jupyterlab/notebook'],
+    activate: function(app, notebookTracker) {
         const tooltipManager = new TooltipManager();
 
-        notebooks.widgetAdded.connect((sender, notebook) => {
+        notebookTracker.widgetAdded.connect((sender, notebook) => {
             notebook.content.rendered.connect(() => {
                 const cells = notebook.content.widgets;
                 cells.forEach(cell => {
@@ -22,7 +19,7 @@ const plugin = {
                         Array.from(links).forEach(link => {
                             link.addEventListener('mouseover', (e) => {
                                 const href = link.getAttribute('href');
-                                if (href?.startsWith('#')) {
+                                if (href && href.startsWith('#')) {
                                     const targetId = href.slice(1);
                                     const content = `<pre>${targetId}</pre>`;
                                     const tooltip = tooltipManager.createTooltip(content);

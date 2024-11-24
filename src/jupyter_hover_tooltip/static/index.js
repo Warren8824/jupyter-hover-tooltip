@@ -1,25 +1,37 @@
+import { TooltipManager } from './tooltip';
+import './styles.css';
+
 define([
     'base/js/namespace',
-    'base/js/events'
-], function(Jupyter, events) {
+    'base/js/events',
+    '@jupyterlab/notebook'
+], function(Jupyter, events, notebook) {
+    const tooltipManager = new TooltipManager();
+
     function load_ipython_extension() {
-        // Your extension code here
-        console.log('Extension loaded');
-        
-        // Add event listener for markdown cells
+        console.log('Hover tooltip extension loaded');
+
+        // Updated event handling for JupyterLab 4.x
         events.on('rendered.MarkdownCell', function(event, data) {
             const cell = data.cell;
             const element = cell.element[0];
-            
-            // Find all links in the markdown cell
+
             const links = element.getElementsByTagName('a');
-            
+
             Array.from(links).forEach(link => {
-                link.addEventListener('mouseover', async (e) => {
-                    // Your tooltip logic here
-                    // Example:
+                link.addEventListener('mouseover', (e) => {
                     const href = link.getAttribute('href');
-                    // Fetch Python code or show tooltip
+                    if (href.startsWith('#')) {
+                        const targetId = href.slice(1);
+                        // Example: Show cell content in tooltip
+                        const content = `<pre>${targetId}</pre>`;
+                        const tooltip = tooltipManager.createTooltip(content);
+                        tooltipManager.positionTooltip(e, tooltip);
+                    }
+                });
+
+                link.addEventListener('mouseout', () => {
+                    tooltipManager.removeTooltip();
                 });
             });
         });

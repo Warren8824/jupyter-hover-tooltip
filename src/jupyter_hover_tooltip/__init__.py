@@ -5,6 +5,6 @@ def _jupyter_labextension_paths():
     to install the widget
     """
     return [{
-        'src': 'labextension',
+        'src': '.',
         'dest': 'jupyter-hover-tooltip'
     }]

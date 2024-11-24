@@ -3,9 +3,11 @@ const path = require('path');
 module.exports = {
   entry: './src/jupyter_hover_tooltip/static/index.js',  // Entry point
   output: {
-    path: path.resolve(__dirname, 'lib'),
-    filename: 'index.js',  // Bundled JS file
+    path: path.resolve(__dirname, 'lib'),  // Bundled output
+    filename: 'index.js',  // Output bundled JS file
   },
   mode: 'production',  // or 'development'
-  // Additional Webpack configurations (loaders, plugins, etc.)
+  resolve: {
+    extensions: ['.js', '.json']  // Handle JavaScript and JSON files
+  }
 };

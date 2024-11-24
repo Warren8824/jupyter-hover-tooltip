@@ -1,38 +1,23 @@
 {
-  "name": "jupyter-hover-tooltip",
-  "version": "0.1.0",
-  "description": "A JupyterLab extension for displaying Python code in tooltips when links are hovered.",
-  "keywords": [
-    "jupyter",
-    "jupyterlab",
-    "jupyterlab-extension"
-  ],
-  "homepage": "https://github.com/Warren8824/jupyter-hover-tooltip",
-  "bugs": {
-    "url": "https://github.com/Warren8824/jupyter-hover-tooltip/issues"
-  },
-  "license": "MIT",
-  "author": "Warren Bebbington",
-  "main": "src/jupyter_hover_tooltip/static/index.js",
-  "jupyterlab": {
-    "extension": true,
-    "outputDir": "jupyter_hover_tooltip/labextension"
-  },
-  "scripts": {
-    "build": "webpack --mode production",
-    "watch": "webpack --watch",
-    "clean": "rm -rf lib tsconfig.tsbuildinfo"
-  },
-  "dependencies": {
-    "@jupyterlab/application": "^4.3.1",
-    "@jupyterlab/apputils": "^4.4.1",
-    "@jupyterlab/cells": "^4.3.1",
-    "@jupyterlab/notebook": "^4.3.1",
-    "@jupyterlab/ui-components": "^4.3.1",
-    "@lumino/disposable": "^2.1.2"
-  },
-  "devDependencies": {
-    "webpack": "^5.96.1",
-    "webpack-cli": "^4.10.0"
-  }
+    "name": "jupyter-hover-tooltip",
+    "version": "0.1.0",
+    "description": "Hover tooltip extension for Jupyter",
+    "scripts": {
+        "build": "webpack",
+        "watch": "webpack --watch"
+    },
+    "dependencies": {
+        "@jupyterlab/application": "^3.0.0",
+        "@jupyterlab/notebook": "^3.0.0",
+        "@jupyterlab/services": "^3.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "babel-loader": "^8.0.0",
+        "css-loader": "^6.0.0",
+        "style-loader": "^3.0.0",
+        "webpack": "^5.0.0",
+        "webpack-cli": "^4.0.0"
+    }
 }

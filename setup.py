@@ -1,21 +1,18 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name="jupyter_hover_tooltip",
     version="0.1.0",
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
+    packages=["jupyter_hover_tooltip"],
+    package_dir={"": "src"},
     include_package_data=True,
     data_files=[
-        ('share/jupyter/nbextensions/jupyter_hover_tooltip', [
-            'lib/index.js',
+        ("share/jupyter/labextensions/jupyter-hover-tooltip", [
+            "lib/index.js",
+            "package.json"
         ]),
-        ('etc/jupyter/nbconfig/notebook.d', [
-            'jupyter_hover_tooltip.json'
-        ])
     ],
     install_requires=[
-        'notebook>=6.0.0',
-        'jupyter>=1.0.0'
+        "jupyterlab>=4.0.0"
     ],
 )

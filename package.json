@@ -24,8 +24,11 @@
     "clean": "rm -rf lib tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "@jupyterlab/application": "~4.2.6",
-    "@jupyterlab/notebook": "~4.2.6",
+    "@jupyterlab/application": "^4.3.1",
+    "@jupyterlab/apputils": "^4.4.1",
+    "@jupyterlab/cells": "^4.3.1",
+    "@jupyterlab/notebook": "^4.3.1",
+    "@jupyterlab/ui-components": "^4.3.1",
     "@lumino/disposable": "^2.1.2"
   },
   "devDependencies": {

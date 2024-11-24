@@ -11,7 +11,7 @@ module.exports = {
     extensions: ['.js', '.json'], // Resolve JavaScript files
   },
   externals: {
-    // Exclude JupyterLab core libraries from bundling (since they're already available in the Jupyter environment)
-    '@jupyterlab/cells': '@jupyterlab/cells',
+    // Exclude JupyterLab core libraries from bundling (since they're already available in the JupyterLab environment)
+    '@jupyterlab/cells': '@jupyterlab/cells', // Keep this external
   },
 };
